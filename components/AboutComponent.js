@@ -2,6 +2,13 @@ import React, {Component} from 'react';
 import {ScrollView,Platform,Text,FlatList} from 'react-native';
 import {Card, ListItem} from 'react-native-elements';
 import {LEADERS} from '../shared/leaders';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+    return {
+      leaders: state.leaders
+    }
+}
 
 function History(props) {
     return(
@@ -65,4 +72,4 @@ class AboutUs extends Component {
     }
 }
 
-export default AboutUs;
+export default connect(mapStateToProps)(AboutUs);
