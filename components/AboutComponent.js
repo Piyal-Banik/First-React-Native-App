@@ -3,6 +3,8 @@ import {ScrollView,Platform,Text,FlatList} from 'react-native';
 import {Card, ListItem} from 'react-native-elements';
 import {LEADERS} from '../shared/leaders';
 import { connect } from 'react-redux';
+import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 const mapStateToProps = state => {
     return {
@@ -50,25 +52,48 @@ class AboutUs extends Component {
                     id={item.id}
                     title={item.name}
                     subtitle={item.description}
-                    leftAvatar={{ source: require('./images/alberto.png')}}
-                />
+                    leftAvatar={{source: {uri: baseUrl + item.image}}}                />
             );
             
         }
 
-        return(
-            <ScrollView>
-                <History />
-                
-                <Card title = "Corporate Leadership">
+        if (this.props.leaders.isLoading) {
+            return(
+                <ScrollView>
+                    <History />
+                    <Card
+                        title='Corporate Leadership'>
+                        <Loading />
+                    </Card>
+                </ScrollView>
+            );
+        }
+        else if (this.props.leaders.errMess) {
+            return(
+                <ScrollView>
+                    <History />
+                    <Card
+                        title='Corporate Leadership'>
+                        <Text>{this.props.leaders.errMess}</Text>
+                    </Card>
+                </ScrollView>
+            );
+        }
+        else {
+            return(
+                <ScrollView>
+                    <History />
+                    <Card
+                        title='Corporate Leadership'>
                     <FlatList 
-                        data={this.state.leaders}
+                        data={this.props.leaders.leaders}
                         renderItem={renderLeader}
                         keyExtractor={item => item.id.toString()}
-                    />
-                </Card>
-            </ScrollView>
-        );
+                        />
+                    </Card>
+                </ScrollView>
+            );
+        }
     }
 }
 
