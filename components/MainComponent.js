@@ -36,13 +36,7 @@ const MenuNavigator = createStackNavigator({
         />
       })
   },
-  DishDetail: { screen: DishDetail,
-    navigationOptions: ({navigation}) => ({
-      headerLeft: <Icon name='menu' size={24}
-        color='white'
-        onPress={ () => navigation.toggleDrawer()}
-      />
-    }) }
+  DishDetail: { screen: DishDetail}
   },
   {
     initialRouteName: 'Menu',
