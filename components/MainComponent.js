@@ -87,9 +87,10 @@ const FavoritesNavigator = createStackNavigator({
         color: "#fff"            
     },
     headerTintColor: "#fff",
-    headerLeft: <Icon name="menu" size={24}
-      iconStyle={{ color: 'white' }} 
-      onPress={ () => navigation.navigate('DrawerToggle') } />    
+    headerLeft: <Icon name='menu' size={24}
+      color='white'
+      onPress={() => navigation.toggleDrawer()}
+      />  
   })
 })
 
@@ -140,9 +141,10 @@ const ReservationNavigator = createStackNavigator({
         color: "#fff"            
     },
     headerTintColor: "#fff",
-    headerLeft: <Icon name="menu" size={24}
-      iconStyle={{ color: 'white' }} 
-      onPress={ () => navigation.navigate('DrawerToggle') } />    
+    headerLeft: <Icon name='menu' size={24}
+      color='white'
+      onPress={() => navigation.toggleDrawer()}
+      />
   })
 })
 
@@ -297,4 +299,4 @@ class Main extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);        
