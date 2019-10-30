@@ -104,7 +104,6 @@ function RenderDish(props) {
                             color='blue'
                             onPress={() => props.onPressComment()}
                             />
-                            
                         <Icon
                             raised
                             reverse

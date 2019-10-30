@@ -12,7 +12,6 @@ import { connect } from 'react-redux';
 import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
 import Reservation from './ReservationComponent';
 import Favorites from './FavoriteComponent';
-import * as Animatable from 'react-native-animatable';
 import Login from './LoginComponent';
 
 const mapStateToProps = state => {
@@ -151,7 +150,7 @@ const ReservationNavigator = createStackNavigator({
 });
 
 const LoginNavigator = createStackNavigator({
-  Login: { screen: Login }
+  Login: Login
   }, {
   navigationOptions: ({ navigation }) => ({
     headerStyle: {
@@ -160,6 +159,7 @@ const LoginNavigator = createStackNavigator({
     headerTitleStyle: {
         color: "#fff"            
     },
+    title: 'Login',
     headerTintColor: "#fff",
     headerLeft: <Icon name="menu" size={24}
       iconStyle={{ color: 'white' }} 
